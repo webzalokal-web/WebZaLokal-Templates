@@ -60,6 +60,17 @@ const interfaceText = {
   },
 };
 
+const shopInterfaceText = {
+  hr: {
+    navMenu: "Ponuda",
+    formPlaceholder: "Proizvod, dostupnost ili vaš upit…",
+  },
+  en: {
+    navMenu: "Collection",
+    formPlaceholder: "Product, availability, or your question…",
+  },
+};
+
 function localized(value: LocalizedText, language: Language) {
   return value[language];
 }
@@ -93,8 +104,13 @@ function makePhotoStyle(photo: PhotoAsset): PhotoStyle {
 export function TemplateSite({ site, theme, demoMode = true }: TemplateSiteProps) {
   const [language, setLanguage] = useState<Language>("hr");
   const [formStatus, setFormStatus] = useState<"demo" | "unavailable" | null>(null);
-  const ui = interfaceText[language];
-  const primaryHref = site.contact.orderUrl ?? site.contact.reservationUrl ?? "#kontakt";
+  const ui = theme.category === "shop"
+    ? { ...interfaceText[language], ...shopInterfaceText[language] }
+    : interfaceText[language];
+  const primaryHref = site.contact.shopUrl
+    ?? site.contact.orderUrl
+    ?? site.contact.reservationUrl
+    ?? "#kontakt";
   const heroPhoto = site.media?.hero;
   const locationLabel = site.locationLabel
     ? localized(site.locationLabel, language)
@@ -111,11 +127,12 @@ export function TemplateSite({ site, theme, demoMode = true }: TemplateSiteProps
     }
   }
 
-  const businessType = theme.category === "restaurant"
-    ? "Restaurant"
-    : theme.category === "cafe"
-      ? "CafeOrCoffeeShop"
-      : "BarOrPub";
+  const businessType = {
+    restaurant: "Restaurant",
+    cafe: "CafeOrCoffeeShop",
+    bar: "BarOrPub",
+    shop: "Store",
+  }[theme.category];
   const structuredData = JSON.stringify({
     "@context": "https://schema.org",
     "@type": businessType,

@@ -32,16 +32,16 @@ function run(command, args, cwd) {
 
 await mkdir(temporaryRoot, { recursive: true });
 const testRoot = await mkdtemp(join(temporaryRoot, "client-test-"));
-const output = resolve(testRoot, "probni-lokal");
+const output = resolve(testRoot, "probni-ducan");
 
 try {
   await run(
     process.execPath,
     [
       resolve(repositoryRoot, "scripts/create-client.mjs"),
-      "--theme", "restaurant-fine-dining",
-      "--slug", "probni-lokal",
-      "--name", "Probni Lokal",
+      "--theme", "shop-plant-botanical",
+      "--slug", "probni-ducan",
+      "--name", "Probni Dućan",
       "--output", output,
     ],
     repositoryRoot,
@@ -61,6 +61,9 @@ try {
   const config = await readFile(resolve(output, "lib/client.ts"), "utf8");
   if (!config.includes('"allowIndexing": false')) {
     throw new Error("Generirani projekt mora biti blokiran od indeksiranja.");
+  }
+  if (!config.includes('"shopUrl": "#ponuda"')) {
+    throw new Error("Generirani projekt dućana mora imati primarnu poveznicu na ponudu.");
   }
 
   await run("npm", ["run", "lint"], output);

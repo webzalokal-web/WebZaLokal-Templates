@@ -99,6 +99,7 @@ export function validateSiteConfig(
     ["contact.instagramUrl", site.contact.instagramUrl],
     ["contact.reservationUrl", site.contact.reservationUrl],
     ["contact.orderUrl", site.contact.orderUrl],
+    ["contact.shopUrl", site.contact.shopUrl],
   ];
   for (const [path, value] of actionUrls) {
     if (value && !isActionUrl(value)) add(path, "mora biti sidro ili potpuna HTTP(S) poveznica");

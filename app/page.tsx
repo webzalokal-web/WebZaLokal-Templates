@@ -1,10 +1,17 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { getSampleSite } from "@/lib/sample-sites";
-import { categoryNames, getThemesByCategory } from "@/lib/themes";
+import { categoryNames, getThemesByCategory, themes } from "@/lib/themes";
 import type { ThemeDefinition, VenueCategory } from "@/lib/schema";
 
-const categories: VenueCategory[] = ["restaurant", "cafe", "bar"];
+const categories: VenueCategory[] = ["restaurant", "cafe", "bar", "shop"];
+
+const categoryDescriptions: Record<VenueCategory, string> = {
+  restaurant: "Od degustacijskog menija do hrane za van.",
+  cafe: "Od specialty kave do cjelodnevnog bruncha.",
+  bar: "Od tihog koktel bara do glasnog vikend programa.",
+  shop: "Od vintage komada i biljaka do lokalnih dizajnerskih proizvoda.",
+};
 
 type ThemeStyle = CSSProperties & Record<`--${string}`, string>;
 
@@ -32,8 +39,8 @@ export default function TemplateCatalog() {
         </Link>
 
         <div className="catalog-hero-copy">
-          <p className="catalog-kicker">Početna kolekcija · 9 smjerova</p>
-          <h1>Ista pouzdana osnova. Devet različitih karaktera.</h1>
+          <p className="catalog-kicker">Početna kolekcija · {themes.length} smjerova</p>
+          <h1>Ista pouzdana osnova. Dvanaest različitih karaktera.</h1>
           <p>
             Odaberite polazni smjer prema lokalu. Fotografije, sadržaj, boje,
             tipografiju i detalje zatim prilagođavamo stvarnoj narudžbi.
@@ -41,8 +48,8 @@ export default function TemplateCatalog() {
         </div>
 
         <div className="catalog-stats" aria-label="Sadržaj kolekcije">
-          <div><strong>3</strong><span>kategorije</span></div>
-          <div><strong>9</strong><span>vizualnih smjerova</span></div>
+          <div><strong>{categories.length}</strong><span>kategorije</span></div>
+          <div><strong>{themes.length}</strong><span>vizualnih smjerova</span></div>
           <div><strong>2</strong><span>jezika u demonstraciji</span></div>
         </div>
       </header>
@@ -56,7 +63,7 @@ export default function TemplateCatalog() {
                 <p>Kategorija</p>
                 <h2>{categoryNames[category]}</h2>
               </div>
-              <p>{category === "restaurant" ? "Od degustacijskog menija do hrane za van." : category === "cafe" ? "Od specialty kave do cjelodnevnog bruncha." : "Od tihog koktel bara do glasnog vikend programa."}</p>
+              <p>{categoryDescriptions[category]}</p>
             </header>
 
             <div className="theme-grid">
@@ -99,8 +106,8 @@ export default function TemplateCatalog() {
       <footer className="catalog-footer">
         <span>WebZaLokal</span>
         <p>Radna kolekcija predložaka · sadržaj je demonstracijski</p>
+        <a href="https://webzalokal.webzalokal.workers.dev/">Paketi i kontakt ↗</a>
       </footer>
     </main>
   );
 }
-

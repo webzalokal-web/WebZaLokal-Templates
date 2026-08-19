@@ -22,6 +22,9 @@ const themes = {
   "bar-cocktail-lounge": { category: "bar", name: "Cocktail lounge" },
   "bar-craft-pub": { category: "bar", name: "Craft pub" },
   "bar-night-event": { category: "bar", name: "Night / event" },
+  "shop-vintage-second-hand": { category: "shop", name: "Vintage / second hand" },
+  "shop-plant-botanical": { category: "shop", name: "Biljke / botanical" },
+  "shop-local-boutique": { category: "shop", name: "Concept / lokalni butik" },
 };
 
 const categoryContent = {
@@ -124,6 +127,39 @@ const categoryContent = {
       ["Atmosfera", "Atmosphere", "Objasnite kakvu večer gost može očekivati.", "Explain the kind of night guests can expect."],
     ],
   },
+  shop: {
+    categoryLabel: { hr: "Lokalni dućan", en: "Local shop" },
+    eyebrow: { hr: "Pažljivo odabrano u vašem kvartu", en: "Carefully selected in your neighbourhood" },
+    headline: { hr: "Dobre stvari vrijedi pronaći uživo.", en: "Good things are worth finding in person." },
+    introduction: {
+      hr: "Ovdje dolazi stvarni kratki opis dućana, proizvoda i ljudi kojima je namijenjen.",
+      en: "Add the real short description of the shop, its products, and the people it serves here.",
+    },
+    aboutTitle: { hr: "Mali dućan s jasnim karakterom.", en: "A small shop with a clear point of view." },
+    aboutBody: {
+      hr: "Zamijenite ovaj tekst pričom dućana, načinom odabira proizvoda i razlogom zbog kojeg kupci dolaze upravo ovdje.",
+      en: "Replace this text with the shop story, how products are selected, and why customers choose to visit.",
+    },
+    menuTitle: { hr: "Izdvojeno iz ponude", en: "Selected from the collection" },
+    menuIntro: { hr: "Unesite aktualne proizvode, varijante i potvrđene cijene.", en: "Add current products, variants, and confirmed prices." },
+    galleryTitle: { hr: "Proizvodi, detalji i prostor", en: "Products, details, and the shop" },
+    contactTitle: { hr: "Provjerite dostupnost ili svratite.", en: "Check availability or drop in." },
+    contactIntro: { hr: "Dodajte stvarne informacije o kupnji, rezervaciji proizvoda ili preuzimanju.", en: "Add real information about purchasing, product holds, or collection." },
+    primaryCta: { hr: "Pogledajte ponudu", en: "View the collection" },
+    secondaryCta: { hr: "Izdvojeni proizvodi", en: "Featured products" },
+    visualLabel: { hr: "Fotografija dućana i proizvoda", en: "Shop and product photography" },
+    menu: [
+      ["Proizvod 01", "Product 01", "Kratki opis, veličina ili varijanta", "Short description, size, or variant", "0 €"],
+      ["Proizvod 02", "Product 02", "Kratki opis, veličina ili varijanta", "Short description, size, or variant", "0 €"],
+      ["Proizvod 03", "Product 03", "Kratki opis, veličina ili varijanta", "Short description, size, or variant", "0 €"],
+      ["Usluga ili novost", "Service or new arrival", "Kratki opis", "Short description", "0 €"],
+    ],
+    features: [
+      ["Odabir", "Selection", "Objasnite kako birate proizvode i brendove.", "Explain how products and brands are selected."],
+      ["Savjet", "Advice", "Istaknite osobnu preporuku ili stručnost.", "Highlight personal recommendations or expertise."],
+      ["Kupnja", "Shopping", "Opišite rezervaciju, preuzimanje ili dostavu.", "Describe holds, collection, or delivery."],
+    ],
+  },
 };
 
 function usage() {
@@ -131,13 +167,13 @@ function usage() {
 WebZaLokal generator klijenta
 
 Uporaba:
-  npm run new-client -- --theme <tema> --slug <slug> --name "Naziv lokala" [--output <mapa>]
+  npm run new-client -- --theme <tema> --slug <slug> --name "Naziv poslovanja" [--output <mapa>]
 
 Primjer:
   npm run new-client -- --theme restaurant-fine-dining --slug restoran-primjer --name "Restoran Primjer"
 
 Opcije:
-  --list-themes   Ispiši svih devet dostupnih tema
+  --list-themes   Ispiši svih dvanaest dostupnih tema
   --help          Prikaži ovu pomoć
 `;
 }
@@ -179,6 +215,20 @@ async function copyRepositoryFile(source, destination, outputRoot) {
 
 function createClientConfig({ category, name, slug, theme }) {
   const content = categoryContent[category];
+  const openingHours = category === "shop"
+    ? [
+        { days: { hr: "Pon — Pet", en: "Mon — Fri" }, hours: "09:00 — 19:00" },
+        { days: { hr: "Subota", en: "Saturday" }, hours: "09:00 — 14:00" },
+        { days: { hr: "Nedjelja", en: "Sunday" }, hours: { hr: "Zatvoreno", en: "Closed" } },
+      ]
+    : [
+        { days: { hr: "Pon — Pet", en: "Mon — Fri" }, hours: "08:00 — 22:00" },
+        { days: { hr: "Subota", en: "Saturday" }, hours: "09:00 — 23:00" },
+        { days: { hr: "Nedjelja", en: "Sunday" }, hours: { hr: "Zatvoreno", en: "Closed" } },
+      ];
+  const primaryContactAction = category === "shop"
+    ? { shopUrl: "#ponuda" }
+    : { reservationUrl: "#kontakt" };
   const menu = content.menu.map(([nameHr, nameEn, descriptionHr, descriptionEn, price]) => ({
     name: { hr: nameHr, en: nameEn },
     description: { hr: descriptionHr, en: descriptionEn },
@@ -209,18 +259,14 @@ function createClientConfig({ category, name, slug, theme }) {
     visualLabel: content.visualLabel,
     menu,
     features,
-    openingHours: [
-      { days: { hr: "Pon — Pet", en: "Mon — Fri" }, hours: "08:00 — 22:00" },
-      { days: { hr: "Subota", en: "Saturday" }, hours: "09:00 — 23:00" },
-      { days: { hr: "Nedjelja", en: "Sunday" }, hours: { hr: "Zatvoreno", en: "Closed" } },
-    ],
+    openingHours,
     contact: {
       address: "Unesite stvarnu adresu, Grad",
       phone: "+385 1 000 0000",
       email: "kontakt@primjer.hr",
       mapsUrl: "https://maps.google.com/",
       instagramUrl: "https://instagram.com/",
-      reservationUrl: "#kontakt",
+      ...primaryContactAction,
     },
     seo: {
       siteUrl: "",
@@ -413,7 +459,7 @@ async function createProject(options) {
     throw new Error("Slug mora koristiti mala slova, brojeve i jednostruke crtice.");
   }
   if (options.slug.length > 48) throw new Error("Slug smije imati najviše 48 znakova.");
-  if (!options.name?.trim()) throw new Error("Naziv lokala je obavezan.");
+  if (!options.name?.trim()) throw new Error("Naziv poslovanja je obavezan.");
 
   const outputRoot = resolve(
     process.cwd(),

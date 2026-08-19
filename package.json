@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "lint": "eslint . --ignore-pattern out --ignore-pattern .next",
+    "lint": "eslint . --ignore-pattern out --ignore-pattern .next --ignore-pattern .tmp",
     "check": "npm run lint && npm run build",
     "new-client": "node scripts/create-client.mjs",
     "test:client": "node scripts/test-client-generator.mjs"

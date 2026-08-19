@@ -1,6 +1,6 @@
 export type Language = "hr" | "en";
 
-export type VenueCategory = "restaurant" | "cafe" | "bar";
+export type VenueCategory = "restaurant" | "cafe" | "bar" | "shop";
 
 export type LayoutVariant =
   | "editorial"
@@ -11,7 +11,10 @@ export type LayoutVariant =
   | "brunch"
   | "cocktail"
   | "industrial"
-  | "night";
+  | "night"
+  | "vintage"
+  | "botanical"
+  | "boutique";
 
 export type LocalizedText = Record<Language, string>;
 
@@ -66,6 +69,7 @@ export interface ContactConfig {
   instagramUrl?: string;
   reservationUrl?: string;
   orderUrl?: string;
+  shopUrl?: string;
   formEndpoint?: string;
 }
 

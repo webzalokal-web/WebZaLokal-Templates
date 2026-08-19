@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "webzalokal-client-template",
+  "name": "webzalokal-demo",
   "compatibility_date": "2026-08-19",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
@@ -9,4 +9,3 @@
     "not_found_handling": "404-page"
   }
 }
-

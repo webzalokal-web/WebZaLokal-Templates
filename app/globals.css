@@ -391,6 +391,85 @@ a {
   border: 1px dashed var(--card-accent);
 }
 
+.theme-card--vintage .theme-card-preview {
+  background-image: repeating-linear-gradient(
+    -8deg,
+    transparent 0 17px,
+    color-mix(in srgb, var(--card-text) 5%, transparent) 18px 19px
+  );
+}
+
+.theme-card--vintage .theme-card-preview::before {
+  content: "pre-loved";
+  padding: 4px 8px;
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 2;
+  background: var(--card-accent);
+  color: var(--card-surface);
+  font-family: "Caveat", cursive;
+  font-size: 12px;
+  transform: rotate(-5deg);
+}
+
+.theme-card--vintage .theme-card-stage strong {
+  max-width: 75%;
+  transform: rotate(-2deg);
+}
+
+.theme-card--botanical .theme-card-preview {
+  background:
+    radial-gradient(ellipse at 82% 28%, color-mix(in srgb, var(--card-accent) 48%, transparent) 0 15%, transparent 16%),
+    radial-gradient(ellipse at 67% 62%, color-mix(in srgb, var(--card-surface) 90%, transparent) 0 24%, transparent 25%),
+    var(--card-bg);
+}
+
+.theme-card--botanical .theme-card-preview::after {
+  content: "";
+  width: 34%;
+  aspect-ratio: 0.72;
+  position: absolute;
+  right: 8%;
+  top: 17%;
+  border: 1px solid var(--card-accent);
+  border-radius: 80% 8% 80% 8%;
+  transform: rotate(15deg);
+}
+
+.theme-card--botanical .theme-card-stage strong {
+  max-width: 66%;
+}
+
+.theme-card--boutique .theme-card-preview {
+  background-image:
+    linear-gradient(var(--card-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+  background-size: 25% 25%;
+}
+
+.theme-card--boutique .theme-card-stage {
+  justify-content: flex-end;
+  padding-bottom: 16px;
+}
+
+.theme-card--boutique .theme-card-stage strong {
+  max-width: 82%;
+  font-size: clamp(31px, 3.6vw, 54px);
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
+.theme-card--boutique .theme-card-stage::after {
+  content: "";
+  width: 28%;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 2px;
+  top: 20%;
+  background: var(--card-accent);
+}
+
 .catalog-footer {
   padding: 40px clamp(24px, 5vw, 82px);
   display: flex;
@@ -408,6 +487,13 @@ a {
   margin: 0;
   color: #96938d;
   font-size: 12px;
+}
+
+.catalog-footer a {
+  color: #f4ed34;
+  font-size: 12px;
+  font-weight: 700;
+  text-underline-offset: 4px;
 }
 
 /* Shared venue foundation */
@@ -1735,6 +1821,268 @@ a {
   box-shadow: 4px 4px 0 var(--accent-strong);
 }
 
+/* Vintage shop — tactile paper, labels and one-off finds */
+
+.venue-site--vintage {
+  background-image: repeating-linear-gradient(
+    -7deg,
+    transparent 0 25px,
+    color-mix(in srgb, var(--text) 3%, transparent) 26px 27px
+  );
+}
+
+.venue-site--vintage .demo-ribbon,
+.venue-site--vintage .venue-header {
+  border-bottom: 2px solid var(--text);
+}
+
+.venue-site--vintage .venue-logo span,
+.venue-site--vintage .language-switcher,
+.venue-site--vintage .section-index span {
+  border-width: 2px;
+  border-color: var(--text);
+}
+
+.venue-site--vintage .hero-copy h1 {
+  font-size: clamp(62px, 8.3vw, 132px);
+  letter-spacing: -0.06em;
+  transform: rotate(-1deg);
+}
+
+.venue-site--vintage .hero-copy::after {
+  content: "one of one";
+  position: absolute;
+  right: 8%;
+  bottom: -18%;
+  color: var(--accent);
+  font-family: var(--accent-font);
+  font-size: clamp(36px, 5vw, 68px);
+  transform: rotate(-8deg);
+}
+
+.venue-site--vintage .hero-visual {
+  min-height: 540px;
+  padding: 18px;
+  border: 2px solid var(--text);
+  box-shadow: var(--shadow);
+  transform: rotate(2.5deg);
+}
+
+.venue-site--vintage .hero-note {
+  padding-block: 12px;
+  border-block: 1px dashed var(--text);
+}
+
+.venue-site--vintage .about-mark {
+  border: 2px dashed var(--accent);
+  border-radius: 50%;
+  background: var(--surface);
+  font-family: var(--accent-font);
+  transform: rotate(-8deg);
+}
+
+.venue-site--vintage .features-section {
+  gap: 18px;
+}
+
+.venue-site--vintage .features-section article {
+  border: 2px solid var(--text);
+  box-shadow: 6px 7px 0 color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.venue-site--vintage .features-section article:nth-child(2) {
+  transform: translateY(20px) rotate(1deg);
+}
+
+.venue-site--vintage .menu-section {
+  border-block: 2px solid var(--text);
+}
+
+.venue-site--vintage .menu-item {
+  border-bottom-style: dashed;
+}
+
+.venue-site--vintage .menu-item-title > span {
+  border: 0;
+  font-family: var(--accent-font);
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.venue-site--vintage .gallery-image {
+  border: 10px solid var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.venue-site--vintage .gallery-image--2 {
+  transform: rotate(-2deg);
+}
+
+.venue-site--vintage .button {
+  box-shadow: 4px 5px 0 var(--text);
+}
+
+/* Plant shop — organic shapes and calm botanical rhythm */
+
+.venue-site--botanical {
+  background-image:
+    radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--accent) 8%, transparent) 0 12%, transparent 13%),
+    radial-gradient(circle at 94% 32%, color-mix(in srgb, var(--surface-strong) 45%, transparent) 0 15%, transparent 16%);
+}
+
+.venue-site--botanical .venue-header {
+  border-bottom: 0;
+}
+
+.venue-site--botanical .hero-copy h1 {
+  max-width: 860px;
+  font-size: clamp(58px, 7.3vw, 116px);
+  font-weight: 500;
+}
+
+.venue-site--botanical .hero-visual {
+  min-height: 620px;
+  border-radius: 62% 38% 58% 42% / 42% 55% 45% 58%;
+  transform: rotate(1.5deg);
+}
+
+.venue-site--botanical .visual-monogram {
+  font-style: italic;
+}
+
+.venue-site--botanical .about-mark {
+  border: 0;
+  border-radius: 80% 12% 80% 12%;
+  background: var(--accent);
+  color: var(--contrast);
+  transform: rotate(12deg);
+}
+
+.venue-site--botanical .features-section {
+  gap: 18px;
+}
+
+.venue-site--botanical .features-section article {
+  border: 0;
+  border-radius: 80px 12px 80px 12px;
+  box-shadow: var(--shadow);
+}
+
+.venue-site--botanical .features-section article:nth-child(2) {
+  border-radius: 12px 80px 12px 80px;
+  transform: translateY(24px);
+}
+
+.venue-site--botanical .menu-section {
+  margin-inline: 14px;
+  border-radius: 90px 90px 0 0;
+}
+
+.venue-site--botanical .gallery-image--1 {
+  border-radius: 48% 10% 42% 12%;
+}
+
+.venue-site--botanical .gallery-image--2 {
+  border-radius: 12% 52% 12% 48%;
+}
+
+.venue-site--botanical .hours-card {
+  border: 0;
+  box-shadow: var(--shadow);
+}
+
+/* Local boutique — crisp gallery grid and product-first hierarchy */
+
+.venue-site--boutique {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.venue-site--boutique .venue-header {
+  min-height: 76px;
+  background: var(--surface);
+  border-bottom-color: var(--text);
+}
+
+.venue-site--boutique .venue-logo strong,
+.venue-site--boutique .hero-copy h1,
+.venue-site--boutique h2 {
+  letter-spacing: -0.065em;
+}
+
+.venue-site--boutique .venue-logo strong,
+.venue-site--boutique .hero-copy h1 {
+  text-transform: uppercase;
+}
+
+.venue-site--boutique .venue-hero {
+  grid-template-columns: minmax(0, 0.82fr) minmax(380px, 1.18fr);
+}
+
+.venue-site--boutique .hero-copy h1 {
+  font-size: clamp(57px, 7.4vw, 122px);
+  line-height: 0.82;
+}
+
+.venue-site--boutique .hero-visual {
+  min-height: 630px;
+  border: 1px solid var(--text);
+  box-shadow: 18px 18px 0 var(--accent);
+}
+
+.venue-site--boutique .hero-note {
+  padding: 11px 0;
+  border-block: 1px solid var(--text);
+}
+
+.venue-site--boutique .section-index span,
+.venue-site--boutique .about-mark,
+.venue-site--boutique .language-switcher {
+  border-radius: 0;
+}
+
+.venue-site--boutique .about-mark {
+  background: var(--accent);
+  color: var(--contrast);
+}
+
+.venue-site--boutique .features-section {
+  gap: 0;
+}
+
+.venue-site--boutique .features-section article {
+  background: var(--surface);
+  border-color: var(--text);
+}
+
+.venue-site--boutique .features-section article:nth-child(2) {
+  background: var(--surface-strong);
+}
+
+.venue-site--boutique .menu-section {
+  border-block: 1px solid var(--text);
+}
+
+.venue-site--boutique .menu-item {
+  border-bottom-color: var(--text);
+}
+
+.venue-site--boutique .menu-item:hover {
+  box-shadow: inset 7px 0 0 var(--accent);
+}
+
+.venue-site--boutique .gallery-image,
+.venue-site--boutique .hours-card {
+  border-color: var(--text);
+}
+
+.venue-site--boutique .button {
+  box-shadow: 5px 5px 0 var(--text);
+}
+
 .not-found {
   min-height: 100vh;
   padding: 40px;
@@ -1917,6 +2265,11 @@ a {
     transform: none;
   }
 
+  .venue-site--vintage .features-section article:nth-child(2),
+  .venue-site--botanical .features-section article:nth-child(2) {
+    transform: none;
+  }
+
   .menu-heading > div:last-child {
     grid-template-columns: 1fr;
   }
@@ -1991,8 +2344,14 @@ a {
 
   .venue-site--bistro .hero-visual,
   .venue-site--street .hero-visual,
-  .venue-site--night .hero-visual {
+  .venue-site--night .hero-visual,
+  .venue-site--vintage .hero-visual,
+  .venue-site--botanical .hero-visual {
     transform: none;
+  }
+
+  .venue-site--vintage .hero-copy::after {
+    display: none;
   }
 
   .venue-site--cozy .venue-hero {
@@ -2027,6 +2386,19 @@ a {
   .venue-site--cocktail .hero-note {
     grid-column: 1;
     grid-row: 2;
+  }
+
+  .venue-site--boutique .venue-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-site--boutique .hero-visual {
+    min-height: 460px;
+    box-shadow: 9px 9px 0 var(--accent);
+  }
+
+  .venue-site--botanical .menu-section {
+    border-radius: 42px 42px 0 0;
   }
 }
 
@@ -2092,4 +2464,3 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
-

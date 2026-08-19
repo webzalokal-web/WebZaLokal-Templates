@@ -422,6 +422,141 @@ export const sampleSites: ClientSiteConfig[] = [
     ],
     contact: { ...sharedContact, reservationUrl: "#kontakt" },
   },
+  {
+    slug: "drugi-krug",
+    themeSlug: "shop-vintage-second-hand",
+    brandName: "Drugi Krug",
+    categoryLabel: t("Vintage i second hand", "Vintage and second hand"),
+    eyebrow: t("Odabrani komadi, svaki samo jednom", "Curated pieces, one of each"),
+    headline: t("Odjeća s prošlošću. Stil bez roka trajanja.", "Clothes with a past. Style without an expiry date."),
+    introduction: t(
+      "Pažljivo odabrana vintage i second hand odjeća za ljude koji radije pronađu nešto svoje nego nešto isto.",
+      "Carefully selected vintage and second-hand clothing for people who would rather find something personal than something identical.",
+    ),
+    aboutTitle: t("Najbolji komadi zaslužuju drugi krug.", "The best pieces deserve another round."),
+    aboutBody: t(
+      "Svaki komad pregledamo, očistimo i biramo pojedinačno. Na stalku su različita desetljeća, kvalitetni materijali i stvari koje se ne pojavljuju svugdje.",
+      "Every piece is checked, cleaned, and selected individually. The rails mix decades, quality materials, and things you will not find everywhere.",
+    ),
+    menuTitle: t("Na stalku ovaj tjedan", "On the rail this week"),
+    menuIntro: t("Primjeri svježih ulova — dostupnost se brzo mijenja.", "A few fresh finds — availability changes quickly."),
+    galleryTitle: t("Detalji koji su već živjeli", "Details with a life already lived"),
+    contactTitle: t("Navratite prije nego ode.", "Drop in before it is gone."),
+    contactIntro: t(
+      "Svaki je komad jedinstven. Za veličinu, mjere ili rezervaciju pošaljite nam poruku.",
+      "Every piece is unique. Message us for sizing, measurements, or a short hold.",
+    ),
+    primaryCta: t("Novi komadi", "New arrivals"),
+    secondaryCta: t("Pogledajte kolekciju", "Browse the collection"),
+    visualLabel: t("Vintage odabir u centru grada", "Vintage finds in the city centre"),
+    menu: [
+      menuItem("Kožna jakna, 90-e", "90s leather jacket", "Mekana crna koža, veličina M", "Soft black leather, size M", "48 €", t("Novi ulov", "New find")),
+      menuItem("Levi's 501", "Levi's 501", "Isprani traper, W29 / L30", "Faded denim, W29 / L30", "32 €"),
+      menuItem("Svilena marama", "Silk scarf", "Geometrijski uzorak, ručno obrađeni rub", "Geometric print, hand-finished edge", "18 €"),
+      menuItem("Lanena košulja", "Linen shirt", "Krem, opušteni kroj, veličina L", "Cream, relaxed fit, size L", "24 €"),
+    ],
+    features: [
+      feature("Ručno odabrano", "Hand-picked", "Bez nasumičnih bala — svaki komad prolazi kroz naše ruke.", "No random bales — every piece passes through our hands."),
+      feature("Jedan je jedan", "One means one", "Nema masovne zalihe ni identičnih vješalica.", "No mass stock and no rails full of duplicates."),
+      feature("Probajte uživo", "Try it in person", "Mjere šaljemo porukom, a komad kratko možemo sačuvati.", "We send measurements by message and can briefly hold an item."),
+    ],
+    openingHours: [
+      { days: t("Uto — Pet", "Tue — Fri"), hours: "11:00 — 19:00" },
+      { days: t("Subota", "Saturday"), hours: "10:00 — 15:00" },
+      { days: t("Ned — Pon", "Sun — Mon"), hours: t("Zatvoreno", "Closed") },
+    ],
+    contact: { ...sharedContact, shopUrl: "#ponuda" },
+  },
+  {
+    slug: "list-i-zemlja",
+    themeSlug: "shop-plant-botanical",
+    brandName: "List & Zemlja",
+    categoryLabel: t("Dućan s biljkama", "Plant shop"),
+    eyebrow: t("Biljke, teglice i mirniji dom", "Plants, pots, and a calmer home"),
+    headline: t("Malo zelenila mijenja cijelu sobu.", "A little green changes the whole room."),
+    introduction: t(
+      "Sobne biljke za početnike i kolekcionare, lokalna keramika i savjeti koji ne završavaju na blagajni.",
+      "Houseplants for beginners and collectors, local ceramics, and advice that does not end at the till.",
+    ),
+    aboutTitle: t("Prava biljka za pravo mjesto.", "The right plant for the right place."),
+    aboutBody: t(
+      "Pitajte nas koliko svjetla imate i koliko se često sjetite zalijevati. Pronaći ćemo biljku koja može uspjeti u vašem stvarnom prostoru i ritmu.",
+      "Tell us how much light you have and how often you remember to water. We will find a plant that can thrive in your actual space and routine.",
+    ),
+    menuTitle: t("Zeleno u ponudi", "Green in store"),
+    menuIntro: t("Izdvojene biljke, posude i usluge iz aktualne ponude.", "Selected plants, pots, and services from the current collection."),
+    galleryTitle: t("Novi listovi, novi kutovi", "New leaves, new corners"),
+    contactTitle: t("Donesite fotografiju svog prostora.", "Bring a photo of your space."),
+    contactIntro: t(
+      "Rado ćemo preporučiti biljku ili provjeriti što se događa s onom koju već imate.",
+      "We are happy to recommend a plant or help diagnose one you already own.",
+    ),
+    primaryCta: t("Istražite biljke", "Browse plants"),
+    secondaryCta: t("Što je stiglo", "See what is new"),
+    visualLabel: t("Biljke birane za gradske domove", "Plants selected for city homes"),
+    menu: [
+      menuItem("Monstera deliciosa", "Monstera deliciosa", "Visina 55–65 cm, tegla Ø 17 cm", "55–65 cm tall, Ø 17 cm pot", "24 €", t("Jednostavna njega", "Easy care")),
+      menuItem("Zlatni puzavac", "Golden pothos", "Viseća biljka za srednje do slabije svjetlo", "Trailing plant for medium to lower light", "12 €"),
+      menuItem("Terakota tegla", "Terracotta pot", "Ručno rađena u maloj lokalnoj radionici", "Handmade by a small local studio", "od 8 €"),
+      menuItem("Presađivanje", "Repotting", "Supstrat, pregled korijena i nova tegla", "Soil, root check, and a new pot", "od 6 €"),
+    ],
+    features: [
+      feature("Savjet bez žargona", "Advice without jargon", "Svjetlo, voda i njega objašnjeni jednostavno.", "Light, water, and care explained simply."),
+      feature("Zdrave biljke", "Healthy plants", "Svaka pošiljka prolazi pregled i prilagodbu.", "Every delivery is checked and acclimatised."),
+      feature("Presađivanje", "Repotting", "Donesite biljku, a mi ćemo pripremiti sve ostalo.", "Bring the plant and we will prepare everything else."),
+    ],
+    openingHours: [
+      { days: t("Pon — Pet", "Mon — Fri"), hours: "09:00 — 19:00" },
+      { days: t("Subota", "Saturday"), hours: "09:00 — 14:00" },
+      { days: t("Nedjelja", "Sunday"), hours: t("Zatvoreno", "Closed") },
+    ],
+    contact: { ...sharedContact, shopUrl: "#ponuda" },
+  },
+  {
+    slug: "malo-dobro",
+    themeSlug: "shop-local-boutique",
+    brandName: "Malo Dobro",
+    categoryLabel: t("Lokalni concept store", "Local concept store"),
+    eyebrow: t("Predmeti malih domaćih autora", "Objects by independent local makers"),
+    headline: t("Lijepe stvari, pronađene blizu.", "Beautiful things, found close to home."),
+    introduction: t(
+      "Keramika, papir, mirisi i mali pokloni domaćih autora — odabrani da ih poželite zadržati.",
+      "Ceramics, paper goods, scents, and small gifts by local makers — selected to be kept, not just given.",
+    ),
+    aboutTitle: t("Mali predmeti s jasnim potpisom.", "Small objects with a clear signature."),
+    aboutBody: t(
+      "Radimo s neovisnim dizajnerima i radionicama iz Hrvatske. Biramo male serije, poštene materijale i predmete iza kojih znamo ime autora.",
+      "We work with independent Croatian designers and studios. We choose small runs, honest materials, and objects whose makers we know by name.",
+    ),
+    menuTitle: t("Odabrano ovaj mjesec", "Selected this month"),
+    menuIntro: t("Nekoliko favorita iz keramike, papira i kućnih detalja.", "A few favourites across ceramics, paper, and home details."),
+    galleryTitle: t("Oblik, papir i svakodnevni rituali", "Form, paper, and everyday rituals"),
+    contactTitle: t("Tražite poklon koji nije generičan?", "Looking for a gift that is not generic?"),
+    contactIntro: t(
+      "Recite nam za koga birate i okvirni budžet. Pripremit ćemo nekoliko prijedloga i zamotati odabrano.",
+      "Tell us who it is for and your approximate budget. We will prepare a few ideas and wrap your choice.",
+    ),
+    primaryCta: t("Pogledajte kolekciju", "View the collection"),
+    secondaryCta: t("Izdvojeni proizvodi", "Featured products"),
+    visualLabel: t("Dizajn iz malih lokalnih serija", "Design from small local runs"),
+    menu: [
+      menuItem("Šalica Linija", "Linija mug", "Ručno točena keramika, svaka malo drukčija", "Slip-cast ceramic, each one slightly different", "22 €", t("Lokalni autor", "Local maker")),
+      menuItem("Grafika Grad 03", "City 03 art print", "Riso tisak A3, numerirana serija od 50", "A3 risograph, numbered edition of 50", "28 €"),
+      menuItem("Svijeća Bor", "Pine candle", "Sojin vosak, borovina i suha smokva", "Soy wax, pinewood, and dried fig", "19 €"),
+      menuItem("Bilježnica Točka", "Točka notebook", "Reciklirani papir, šivani uvez, 160 stranica", "Recycled paper, sewn binding, 160 pages", "14 €"),
+    ],
+    features: [
+      feature("Lokalni autori", "Local makers", "Predmeti s poznatim podrijetlom i stvarnim potpisom.", "Objects with a known origin and a real maker behind them."),
+      feature("Male serije", "Small runs", "Ponuda se mijenja kako radionice stvaraju novo.", "The selection changes as the studios make new work."),
+      feature("Poklon-pakiranje", "Gift wrapping", "Jednostavno, lijepo i uključeno u cijenu.", "Simple, considered, and included in the price."),
+    ],
+    openingHours: [
+      { days: t("Pon — Pet", "Mon — Fri"), hours: "10:00 — 19:00" },
+      { days: t("Subota", "Saturday"), hours: "10:00 — 15:00" },
+      { days: t("Nedjelja", "Sunday"), hours: t("Zatvoreno", "Closed") },
+    ],
+    contact: { ...sharedContact, shopUrl: "#ponuda" },
+  },
 ];
 
 export const sampleSiteMap = new Map(
@@ -431,4 +566,3 @@ export const sampleSiteMap = new Map(
 export function getSampleSite(themeSlug: string): ClientSiteConfig | undefined {
   return sampleSiteMap.get(themeSlug);
 }
-

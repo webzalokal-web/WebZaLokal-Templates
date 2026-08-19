@@ -208,6 +208,75 @@ export const themes: ThemeDefinition[] = [
     radius: "0px",
     shadow: "0 0 44px rgba(118, 247, 255, 0.2)",
   },
+  {
+    slug: "shop-vintage-second-hand",
+    category: "shop",
+    name: "Vintage / second hand",
+    shortDescription: "Taktilna papirnata paleta, odvažni detalji i editorialni vintage karakter.",
+    layout: "vintage",
+    colors: {
+      background: "#efe2c7",
+      surface: "#fff8e9",
+      surfaceStrong: "#d9c39b",
+      text: "#211e1a",
+      muted: "#6e6252",
+      accent: "#c83f30",
+      accentStrong: "#982c21",
+      contrast: "#fff8e9",
+      border: "rgba(33, 30, 26, 0.24)",
+    },
+    displayFont: "'Roboto Slab', Georgia, serif",
+    bodyFont: "'Work Sans', Arial, sans-serif",
+    accentFont: "'Caveat', cursive",
+    radius: "8px",
+    shadow: "10px 12px 0 rgba(33, 30, 26, 0.2)",
+  },
+  {
+    slug: "shop-plant-botanical",
+    category: "shop",
+    name: "Biljke / botanical",
+    shortDescription: "Organski oblici, prirodna zelena paleta i mirna, stručna tipografija.",
+    layout: "botanical",
+    colors: {
+      background: "#e8efdf",
+      surface: "#f8f6ec",
+      surfaceStrong: "#c7d5b8",
+      text: "#193127",
+      muted: "#607064",
+      accent: "#337357",
+      accentStrong: "#1f523c",
+      contrast: "#f8f6ec",
+      border: "rgba(25, 49, 39, 0.17)",
+    },
+    displayFont: "'Lora', Georgia, serif",
+    bodyFont: "'Nunito Sans', Arial, sans-serif",
+    accentFont: "'Instrument Serif', Georgia, serif",
+    radius: "40px",
+    shadow: "0 28px 70px rgba(38, 67, 48, 0.15)",
+  },
+  {
+    slug: "shop-local-boutique",
+    category: "shop",
+    name: "Concept / lokalni butik",
+    shortDescription: "Čista galerijska mreža, snažan plavi akcent i suvremena tipografija.",
+    layout: "boutique",
+    colors: {
+      background: "#f1f2ef",
+      surface: "#ffffff",
+      surfaceStrong: "#dfe3ff",
+      text: "#111216",
+      muted: "#686970",
+      accent: "#304ffe",
+      accentStrong: "#1733c7",
+      contrast: "#ffffff",
+      border: "rgba(17, 18, 22, 0.18)",
+    },
+    displayFont: "'Space Grotesk', Arial, sans-serif",
+    bodyFont: "'Manrope', Arial, sans-serif",
+    accentFont: "'Italiana', Georgia, serif",
+    radius: "0px",
+    shadow: "0 24px 64px rgba(21, 29, 76, 0.14)",
+  },
 ];
 
 export const themeMap = new Map(themes.map((theme) => [theme.slug, theme]));
@@ -216,6 +285,7 @@ export const categoryNames: Record<VenueCategory, string> = {
   restaurant: "Restoran",
   cafe: "Kafić",
   bar: "Bar",
+  shop: "Lokalni dućan",
 };
 
 export function getTheme(slug: string): ThemeDefinition | undefined {
@@ -225,4 +295,3 @@ export function getTheme(slug: string): ThemeDefinition | undefined {
 export function getThemesByCategory(category: VenueCategory): ThemeDefinition[] {
   return themes.filter((theme) => theme.category === category);
 }
-

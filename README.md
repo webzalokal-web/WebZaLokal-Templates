@@ -1,6 +1,6 @@
 # WebZaLokal Templates
 
-Privatna radna kolekcija modularnih web-predložaka za ugostiteljske lokale. Sadrži zajedničku tehničku osnovu i devet različitih vizualnih smjerova — tri za restorane, tri za kafiće i tri za barove.
+Javna demonstracijska kolekcija modularnih web-predložaka za lokalna poslovanja i interna proizvodna osnova. Sadrži dvanaest različitih vizualnih smjerova — po tri za restorane, kafiće, barove i male lokalne dućane.
 
 ## Što je uključeno
 
@@ -9,13 +9,14 @@ Privatna radna kolekcija modularnih web-predložaka za ugostiteljske lokale. Sad
 | Restoran | Fine dining, kvartovski bistro, fast food / štand |
 | Kafić | Specialty minimal, kvartovski cozy, brunch / slastičarnica |
 | Bar | Cocktail lounge, craft pub, night / event |
+| Lokalni dućan | Vintage / second hand, biljke / botanical, concept / lokalni butik |
 
 Svaki demo uključuje:
 
 - responzivnu početnu stranicu;
 - HR/EN prebacivanje sadržaja;
 - predstavljanje lokala i ključnih prednosti;
-- jelovnik, cjenik ili program;
+- jelovnik, cjenik, program ili izdvojene proizvode;
 - galeriju i podršku za stvarne fotografije;
 - radno vrijeme, kartu, telefon, e-mail i Instagram;
 - upitni obrazac spreman za spajanje na odabrani servis;
@@ -31,7 +32,7 @@ npm install
 npm run dev
 ```
 
-Otvorite `http://localhost:3000`. Početna stranica prikazuje svih devet smjerova.
+Otvorite `http://localhost:3000`. Početna stranica prikazuje svih dvanaest smjerova.
 
 Provjera projekta:
 
@@ -64,7 +65,7 @@ Automatski test generatora:
 npm run test:client
 ```
 
-Test stvara privremeni probni lokal, pokreće njegov lint, produkcijski build i Cloudflare `deploy --dry-run`, a zatim briše isključivo tu privremenu mapu.
+Test stvara privremeni probni projekt za dućan, pokreće njegov lint, produkcijski build i Cloudflare `deploy --dry-run`, a zatim briše isključivo tu privremenu mapu.
 
 ## Struktura
 
@@ -73,9 +74,9 @@ app/                         rute, metapodaci i zajednički CSS
 components/template-site.tsx univerzalna funkcionalna stranica lokala
 scripts/create-client.mjs    generator zasebnog klijentskog projekta
 lib/schema.ts                tipovi svih podataka
-lib/themes.ts                devet dizajnerskih sustava
+lib/themes.ts                dvanaest dizajnerskih sustava
 lib/validate-site.ts         provjera obaveznih podataka prije builda
-lib/sample-sites.ts          demonstracijski sadržaj za devet lokala
+lib/sample-sites.ts          demonstracijski sadržaj za dvanaest poslovanja
 public/                      fotografije, logotip i ostali statički materijali
 docs/NOVI-KLIJENT.md         radni postupak za konkretnu narudžbu
 wrangler.jsonc               Cloudflare Static Assets konfiguracija
@@ -83,7 +84,7 @@ wrangler.jsonc               Cloudflare Static Assets konfiguracija
 
 ## Kako nastaje stranica stvarnog klijenta
 
-1. Ispuni se brief iz `docs/NOVI-KLIJENT.md` i odabere najbliži od devet smjerova.
+1. Ispuni se brief iz `docs/NOVI-KLIJENT.md` i odabere najbliži od dvanaest smjerova.
 2. Naredbom `npm run new-client` generira se zaseban projekt i za njega otvori privatni repozitorij.
 3. U generiranom `lib/client.ts` zamijeni se privremeni sadržaj stvarnim podacima.
 4. Fotografije se stave u `public/clients/<slug>/` i povežu preko `media.hero` i `media.gallery`.
@@ -124,4 +125,4 @@ Prije prvog deploymenta treba biti prijavljen Cloudflare račun (`npx wrangler l
 
 ## Važno
 
-Svi nazivi, adrese, jelovnici i cijene u kolekciji su demonstracijski. Predložak je polazište, a ne gotova stranica koja se bez prilagodbe objavljuje za više klijenata.
+Svi nazivi, adrese, jelovnici, proizvodi i cijene u kolekciji su demonstracijski. Predložak je polazište, a ne gotova stranica koja se bez prilagodbe objavljuje za više klijenata.
