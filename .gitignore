@@ -2,6 +2,7 @@ node_modules/
 .next/
 out/
 .wrangler/
+.tmp/
 .env*
 !.env.example
 *.log

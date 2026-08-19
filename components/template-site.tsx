@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties, type FormEvent } from "react";
 import type { ClientSiteConfig, Language, LocalizedText, PhotoAsset, ThemeDefinition } from "@/lib/schema";
 
 type TemplateSiteProps = {
   site: ClientSiteConfig;
   theme: ThemeDefinition;
+  demoMode?: boolean;
 };
 
 type ThemeStyle = CSSProperties & Record<`--${string}`, string>;
@@ -29,7 +30,8 @@ const interfaceText = {
     formMessage: "Poruka",
     formPlaceholder: "Termin, broj osoba ili vaš upit…",
     formSubmit: "Pošalji upit",
-    formSuccess: "Demonstracija je uspjela — u stvarnoj stranici ovaj upit ide izravno lokalu.",
+    formDemoSuccess: "Demonstracija je uspjela — u stvarnoj stranici ovaj upit ide izravno lokalu.",
+    formUnavailable: "Obrazac još nije spojen. Do objave koristite telefon ili e-mail lokala.",
     demo: "Demonstracijski sadržaj",
     galleryAlt: "Mjesto za fotografiju lokala",
     follow: "Instagram",
@@ -50,7 +52,8 @@ const interfaceText = {
     formMessage: "Message",
     formPlaceholder: "Date, party size, or your question…",
     formSubmit: "Send enquiry",
-    formSuccess: "Demo complete — on a live client site, this enquiry goes directly to the venue.",
+    formDemoSuccess: "Demo complete — on a live client site, this enquiry goes directly to the venue.",
+    formUnavailable: "The form is not connected yet. Until launch, please use the venue phone or email.",
     demo: "Demonstration content",
     galleryAlt: "Venue photography placeholder",
     follow: "Instagram",
@@ -87,12 +90,15 @@ function makePhotoStyle(photo: PhotoAsset): PhotoStyle {
   };
 }
 
-export function TemplateSite({ site, theme }: TemplateSiteProps) {
+export function TemplateSite({ site, theme, demoMode = true }: TemplateSiteProps) {
   const [language, setLanguage] = useState<Language>("hr");
-  const [sent, setSent] = useState(false);
+  const [formStatus, setFormStatus] = useState<"demo" | "unavailable" | null>(null);
   const ui = interfaceText[language];
   const primaryHref = site.contact.orderUrl ?? site.contact.reservationUrl ?? "#kontakt";
   const heroPhoto = site.media?.hero;
+  const locationLabel = site.locationLabel
+    ? localized(site.locationLabel, language)
+    : site.contact.address.split(",").at(-1)?.trim() ?? site.contact.address;
   const initials = useMemo(
     () => site.brandName.split(/\s+/).map((word) => word[0]).join("").slice(0, 2),
     [site.brandName],
@@ -101,9 +107,31 @@ export function TemplateSite({ site, theme }: TemplateSiteProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     if (!site.contact.formEndpoint) {
       event.preventDefault();
-      setSent(true);
+      setFormStatus(demoMode ? "demo" : "unavailable");
     }
   }
+
+  const businessType = theme.category === "restaurant"
+    ? "Restaurant"
+    : theme.category === "cafe"
+      ? "CafeOrCoffeeShop"
+      : "BarOrPub";
+  const structuredData = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": businessType,
+    name: site.brandName,
+    description: site.seo?.description?.hr ?? site.introduction.hr,
+    url: site.seo?.siteUrl || undefined,
+    telephone: site.contact.phone,
+    email: site.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.contact.address,
+    },
+    image: site.media?.hero?.src,
+    priceRange: site.seo?.priceRange,
+    sameAs: site.contact.instagramUrl ? [site.contact.instagramUrl] : undefined,
+  }).replace(/</g, "\\u003c");
 
   return (
     <div
@@ -111,12 +139,18 @@ export function TemplateSite({ site, theme }: TemplateSiteProps) {
       data-theme={theme.slug}
       style={makeThemeStyle(theme)}
     >
+      <script
+        dangerouslySetInnerHTML={{ __html: structuredData }}
+        type="application/ld+json"
+      />
       <a className="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
 
-      <div className="demo-ribbon">
-        <Link href="/">← {ui.back}</Link>
-        <span>{theme.name} · {ui.demo}</span>
-      </div>
+      {demoMode && (
+        <div className="demo-ribbon">
+          <Link href="/">← {ui.back}</Link>
+          <span>{theme.name} · {ui.demo}</span>
+        </div>
+      )}
 
       <header className="venue-header">
         <a className="venue-logo" href="#vrh" aria-label={`${site.brandName} — početna`}>
@@ -174,7 +208,7 @@ export function TemplateSite({ site, theme }: TemplateSiteProps) {
           <div className="hero-note">
             <span>{localized(site.categoryLabel, language)}</span>
             <i />
-            <span>Zagreb</span>
+            <span>{locationLabel}</span>
           </div>
         </section>
 
@@ -304,7 +338,11 @@ export function TemplateSite({ site, theme }: TemplateSiteProps) {
                 <textarea name="message" placeholder={ui.formPlaceholder} required rows={4} />
               </label>
               <button className="button" type="submit">{ui.formSubmit}</button>
-              {sent && <p className="form-success" role="status">{ui.formSuccess}</p>}
+              {formStatus && (
+                <p className="form-success" role="status">
+                  {formStatus === "demo" ? ui.formDemoSuccess : ui.formUnavailable}
+                </p>
+              )}
             </form>
           </div>
         </section>

@@ -225,3 +225,4 @@ export function getTheme(slug: string): ThemeDefinition | undefined {
 export function getThemesByCategory(category: VenueCategory): ThemeDefinition[] {
   return themes.filter((theme) => theme.category === category);
 }
+

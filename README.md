@@ -39,13 +39,42 @@ Provjera projekta:
 npm run check
 ```
 
+## Stvaranje novog klijentskog projekta
+
+Kada stigne prvi klijent, ne treba ručno kopirati katalog niti brisati preostalih osam stilova. Generator stvara zaseban projekt s odabranom temom, jedinstvenim Cloudflare imenom, početnim sadržajem i sigurnim SEO postavkama:
+
+```bash
+npm run new-client -- \
+  --theme restaurant-fine-dining \
+  --slug ime-lokala \
+  --name "Ime Lokala"
+```
+
+Dostupne teme:
+
+```bash
+npm run new-client -- --list-themes
+```
+
+Generator namjerno postavlja `seo.allowIndexing` na `false`. Google indeksiranje uključuje se tek nakon što su potvrđeni domena, sadržaj, cijene, radno vrijeme, fotografije i kontaktni obrazac.
+
+Automatski test generatora:
+
+```bash
+npm run test:client
+```
+
+Test stvara privremeni probni lokal, pokreće njegov lint, produkcijski build i Cloudflare `deploy --dry-run`, a zatim briše isključivo tu privremenu mapu.
+
 ## Struktura
 
 ```text
 app/                         rute, metapodaci i zajednički CSS
 components/template-site.tsx univerzalna funkcionalna stranica lokala
+scripts/create-client.mjs    generator zasebnog klijentskog projekta
 lib/schema.ts                tipovi svih podataka
 lib/themes.ts                devet dizajnerskih sustava
+lib/validate-site.ts         provjera obaveznih podataka prije builda
 lib/sample-sites.ts          demonstracijski sadržaj za devet lokala
 public/                      fotografije, logotip i ostali statički materijali
 docs/NOVI-KLIJENT.md         radni postupak za konkretnu narudžbu
@@ -55,12 +84,14 @@ wrangler.jsonc               Cloudflare Static Assets konfiguracija
 ## Kako nastaje stranica stvarnog klijenta
 
 1. Ispuni se brief iz `docs/NOVI-KLIJENT.md` i odabere najbliži od devet smjerova.
-2. Za klijenta se otvori zaseban privatni repozitorij kopiran iz ove osnove.
-3. U `lib/sample-sites.ts` zamijeni se demonstracijski sadržaj stvarnim podacima ili se zadrži samo jedna konfiguracija.
+2. Naredbom `npm run new-client` generira se zaseban projekt i za njega otvori privatni repozitorij.
+3. U generiranom `lib/client.ts` zamijeni se privremeni sadržaj stvarnim podacima.
 4. Fotografije se stave u `public/clients/<slug>/` i povežu preko `media.hero` i `media.gallery`.
 5. Paleta, font, raspored i detalji dorade se prema fotografijama lokala i dizajnerskim komentarima.
 6. U `wrangler.jsonc` promijeni se jedinstveni `name`, npr. `webzalokal-ime-lokala`.
 7. Spoji se stvarni endpoint obrasca kroz `contact.formEndpoint`, provjere sve poveznice te pokrenu `npm run check` i deployment.
+
+Svaki push i pull request dodatno prolazi GitHub Actions provjeru: instalacija iz zaključanog `package-lock.json`, lint, TypeScript/Next.js build, test generatora i Cloudflare dry-run.
 
 Primjer dodavanja fotografija u konfiguraciju lokala:
 

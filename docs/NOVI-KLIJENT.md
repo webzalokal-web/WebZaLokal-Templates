@@ -77,3 +77,4 @@ Ovdje se bilježi stručna interpretacija materijala, primjerice:
 - [ ] HR i EN sadržaj provjeren
 - [ ] Naslov, opis, favicon i dijeljenje na društvenim mrežama provjereni
 - [ ] Cloudflare deployment i domena provjereni
+

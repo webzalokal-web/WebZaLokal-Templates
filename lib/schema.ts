@@ -80,6 +80,15 @@ export interface MediaConfig {
   gallery?: PhotoAsset[];
 }
 
+export interface SeoConfig {
+  siteUrl?: string;
+  title?: LocalizedText;
+  description?: LocalizedText;
+  ogImage?: string;
+  priceRange?: string;
+  allowIndexing?: boolean;
+}
+
 export interface ClientSiteConfig {
   slug: string;
   themeSlug: string;
@@ -103,4 +112,6 @@ export interface ClientSiteConfig {
   openingHours: OpeningHours[];
   contact: ContactConfig;
   media?: MediaConfig;
+  seo?: SeoConfig;
+  locationLabel?: LocalizedText;
 }

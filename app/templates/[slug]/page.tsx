@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { TemplateSite } from "@/components/template-site";
 import { getSampleSite } from "@/lib/sample-sites";
 import { getTheme, themes } from "@/lib/themes";
+import { assertSiteConfig } from "@/lib/validate-site";
 
 type TemplatePageProps = {
   params: Promise<{ slug: string }>;
@@ -33,6 +34,8 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
   const site = getSampleSite(slug);
 
   if (!theme || !site) notFound();
+
+  assertSiteConfig(site, theme);
 
   return <TemplateSite site={site} theme={theme} />;
 }

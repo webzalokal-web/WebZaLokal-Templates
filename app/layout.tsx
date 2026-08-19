@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   },
   description:
     "Modularni predlošci web-stranica za restorane, kafiće i barove.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
