@@ -39,11 +39,12 @@ export default function TemplateCatalog() {
         </Link>
 
         <div className="catalog-hero-copy">
-          <p className="catalog-kicker">Početna kolekcija · {themes.length} smjerova</p>
-          <h1>Ista pouzdana osnova. Dvanaest različitih karaktera.</h1>
+          <p className="catalog-kicker">{themes.length} početnih smjerova · nijedan gotov proizvod</p>
+          <h1>Okvir za početak. Karakter nastaje oko vašeg lokala.</h1>
           <p>
-            Odaberite polazni smjer prema lokalu. Fotografije, sadržaj, boje,
-            tipografiju i detalje zatim prilagođavamo stvarnoj narudžbi.
+            Svaki demo pokazuje mogući smjer, a ne stranicu koju samo kopiramo.
+            Fotografije, sadržaj, boje, tipografiju i detalje prilagođavamo
+            stvarnom prostoru, ponudi i potrebama klijenta.
           </p>
         </div>
 
@@ -105,7 +106,7 @@ export default function TemplateCatalog() {
 
       <footer className="catalog-footer">
         <span>WebZaLokal</span>
-        <p>Radna kolekcija predložaka · sadržaj je demonstracijski</p>
+        <p>Demo-kolekcija · svaki projekt se individualno prilagođava</p>
         <a href="https://webzalokal.webzalokal.workers.dev/">Paketi i kontakt ↗</a>
       </footer>
     </main>
