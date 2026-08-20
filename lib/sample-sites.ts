@@ -135,16 +135,16 @@ export const sampleSites: ClientSiteConfig[] = [
     themeSlug: "restaurant-fast-food",
     brandName: "Brzi Zalogaj",
     categoryLabel: t("Street food", "Street food"),
-    eyebrow: t("Vruće. Hrskavo. Odmah.", "Hot. Crispy. Now."),
+    eyebrow: t("Ljuto. Svježe. Odmah.", "Spicy. Fresh. Now."),
     headline: t("Velik okus bez dugog čekanja.", "Big flavour without the wait."),
     introduction: t(
-      "Burgeri, loaded fries i sendviči složeni za ručak u pokretu ili kasnu večernju glad.",
-      "Burgers, loaded fries, and sandwiches built for lunch on the go or a late-night craving.",
+      "Tortilje, tacosi i loaded fries složeni za ručak u pokretu ili kasnu večernju glad.",
+      "Wraps, tacos, and loaded fries built for lunch on the go or a late-night craving.",
     ),
     aboutTitle: t("Brzo ne znači bez karaktera.", "Fast does not mean forgettable."),
     aboutBody: t(
-      "Svaki umak radimo sami, meso pečemo po narudžbi, a krumpirići izlaze iz friteze tek kad ste vi na redu.",
-      "We make every sauce in-house, grill to order, and drop the fries only when it is your turn.",
+      "Salse i umake radimo sami, meso pečemo po narudžbi, a tortilje grijemo tek kad ste vi na redu.",
+      "We make every salsa and sauce in-house, grill to order, and warm each tortilla only when it is your turn.",
     ),
     menuTitle: t("Uzmi svoj favorit", "Pick your favourite"),
     menuIntro: t("Jasne cijene, bez sitnih slova.", "Clear prices, no fine print."),
@@ -155,10 +155,10 @@ export const sampleSites: ClientSiteConfig[] = [
     secondaryCta: t("Otvori meni", "Open menu"),
     visualLabel: t("Street food u akciji", "Street food in action"),
     menu: [
-      menuItem("Classic smash", "Classic smash", "Dvije pljeskavice, cheddar, kiseli krastavci", "Two patties, cheddar, pickles", "9,50 €", t("Bestseller", "Bestseller")),
-      menuItem("Hot chicken", "Hot chicken", "Hrskava piletina, ljuti umak, coleslaw", "Crispy chicken, hot sauce, coleslaw", "9 €"),
-      menuItem("Loaded fries", "Loaded fries", "Cheddar, mladi luk, kućni umak", "Cheddar, spring onion, house sauce", "6 €"),
-      menuItem("Veggie crunch", "Veggie crunch", "Pohani patlidžan, tahini, salata", "Crispy aubergine, tahini, salad", "8,50 €"),
+      menuItem("Pollo burrito", "Pollo burrito", "Grilana piletina, riža, grah, salsa roja", "Grilled chicken, rice, beans, salsa roja", "9,50 €", t("Bestseller", "Bestseller")),
+      menuItem("Birria tacos", "Birria tacos", "Spora govedina, luk, korijander, consommé", "Slow-cooked beef, onion, coriander, consommé", "10 €"),
+      menuItem("Loaded nachos", "Loaded nachos", "Sir, grah, pico de gallo, jalapeño", "Cheese, beans, pico de gallo, jalapeño", "6,50 €"),
+      menuItem("Veggie crunch", "Veggie crunch", "Pečena cvjetača, kukuruz, salsa verde", "Roast cauliflower, corn, salsa verde", "8,50 €"),
     ],
     features: [
       feature("Gotovo brzo", "Ready fast", "Većina narudžbi spremna je za deset minuta.", "Most orders are ready in ten minutes."),
@@ -388,8 +388,8 @@ export const sampleSites: ClientSiteConfig[] = [
     eyebrow: t("Petak i subota bez pauze", "Friday and Saturday without pause"),
     headline: t("Pojačaj noć.", "Turn the night up."),
     introduction: t(
-      "DJ program, gostujući kolektivi, neonski bar i raspored koji odmah govori gdje trebate biti ovaj vikend.",
-      "DJ nights, guest collectives, a neon bar, and a schedule that tells you exactly where to be this weekend.",
+      "DJ program, gostujući kolektivi, odvažan bar i raspored koji odmah govori gdje trebate biti ovaj vikend.",
+      "DJ nights, guest collectives, a bold club bar, and a schedule that tells you exactly where to be this weekend.",
     ),
     aboutTitle: t("Program je glavna priča.", "The programme is the main story."),
     aboutBody: t(
@@ -403,7 +403,7 @@ export const sampleSites: ClientSiteConfig[] = [
     contactIntro: t("Za privatne evente i gostovanja pošaljite upit.", "Send an enquiry for private events and guest bookings."),
     primaryCta: t("Uzmi ulaznicu", "Get tickets"),
     secondaryCta: t("Otvori program", "View programme"),
-    visualLabel: t("Neonski plesni podij", "Neon dance floor"),
+    visualLabel: t("Plesni podij u pokretu", "Dance floor in motion"),
     menu: [
       menuItem("FRI — Electric Bloom", "FRI — Electric Bloom", "House / disco — doors 22:00", "House / disco — doors 22:00", "8 €"),
       menuItem("SAT — Low Frequency", "SAT — Low Frequency", "Bass / breaks — doors 23:00", "Bass / breaks — doors 23:00", "10 €"),
